@@ -8,13 +8,18 @@
 
 'use strict';
 
+var bumpFiles = [
+    'package.json'
+];
+
 module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         bump: {
             options: {
-                pushTo: 'origin',
-                commit: true
+                files: bumpFiles,
+                commitFiles: bumpFiles,
+                push: false
             }
         }
     });
