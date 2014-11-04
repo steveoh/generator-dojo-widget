@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "grunt": "~0.4",
-    "grunt-bump": "0.0.14",
+    "grunt-bump": "^0.0",
     "mocha": "*"
   },
   "peerDependencies": {

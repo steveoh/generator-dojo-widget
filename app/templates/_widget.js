@@ -1,5 +1,5 @@
 define([
-    'dojo/text!./templates/<%=widgetName%>.html',
+    'dojo/text!<%=widgetName%>/templates/<%=widgetName%>.html',
 
     'dojo/_base/declare',
 
@@ -23,7 +23,7 @@ define([
         //      <%= description %>
 
         templateString: template,
-        baseClass: '<%= _.dasherize(widgetName).slice(1) %>',<% if(widgetsInTemplate) { %>
+        baseClass: '<%= _.dasherize(widgetName) %>',<% if(widgetsInTemplate) { %>
         widgetsInTemplate: true,<% }%>
 
         // Properties to be sent into constructor
