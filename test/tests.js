@@ -70,9 +70,9 @@ describe('generator tests', function() {
       }).on('end', function() {
         assert.file(expected);
         assert.fileContent([
-          ['app/resources/TestApp.css', /\.test-app/],
-          ['app/TestApp.js', /baseClass: 'test-app'/],
-          ['app/TestApp.js', /'dojo\/text\!app\/templates\/testApp.html',/]
+          ['app/resources/testApp.css', /\.test-app/],
+          ['app/testApp.js', /baseClass: 'test-app'/],
+          ['app/testApp.js', /'dojo\/text\!app\/templates\/testApp.html',/]
         ]);
 
         done();
