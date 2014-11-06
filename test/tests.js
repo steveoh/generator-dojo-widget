@@ -44,7 +44,8 @@ describe('generator tests', function() {
         assert.file(expected);
         assert.fileContent([
           ['app/resources/TestApp.css', /\.test-app/],
-          ['app/TestApp.js', /baseClass: 'test-app'/]
+          ['app/TestApp.js', /baseClass: 'test-app'/],
+          ['app/TestApp.js', /'dojo\/text\!app\/templates\/TestApp.html',/]
         ]);
 
         done();
@@ -70,7 +71,8 @@ describe('generator tests', function() {
         assert.file(expected);
         assert.fileContent([
           ['app/resources/TestApp.css', /\.test-app/],
-          ['app/TestApp.js', /baseClass: 'test-app'/]
+          ['app/TestApp.js', /baseClass: 'test-app'/],
+          ['app/TestApp.js', /'dojo\/text\!app\/templates\/testApp.html',/]
         ]);
 
         done();
