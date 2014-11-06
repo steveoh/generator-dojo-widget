@@ -23,7 +23,7 @@ define([
         //      <%= description %>
 
         templateString: template,
-        baseClass: '<%= _.dasherize(widgetName) %>',<% if(widgetsInTemplate) { %>
+        baseClass: '<%= _.dasherize(cssClass) %>',<% if(widgetsInTemplate) { %>
         widgetsInTemplate: true,<% }%>
 
         // Properties to be sent into constructor

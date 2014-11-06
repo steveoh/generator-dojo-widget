@@ -34,6 +34,7 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function(props) {
       this.widgetName = props.widgetName;
+      this.cssClass = props.widgetName.charAt(0).toLowerCase() + props.widgetName.slice(1);
       this.description = props.description;
       this.path = props.path + '/';
       this.widgetsInTemplate = props.widgetsInTemplate;
