@@ -1,5 +1,5 @@
 define([
-    'dojo/text!<%=widgetName%>/templates/<%=widgetName%>.html',
+    'dojo/text!<%=path%>templates/<%=widgetName%>.html',
 
     'dojo/_base/declare',
 
