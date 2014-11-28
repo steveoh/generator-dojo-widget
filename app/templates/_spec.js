@@ -16,6 +16,7 @@ require([
 
         beforeEach(function() {
             widget = new WidgetUnderTest(null, domConstruct.create('div', null, document.body));
+            widget.startup();
         });
 
         afterEach(function() {
