@@ -39,3 +39,8 @@ The `/test.js` file will contain your widget logic.
 ## License
 
 MIT
+
+## Release Notes
+
+**0.2.0** Added xstyle and stylus for css  
+
