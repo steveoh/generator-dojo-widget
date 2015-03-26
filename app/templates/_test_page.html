@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
 <head>
     <title><%= widgetName %> Tests</title>
@@ -7,10 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="<%= testPageBaseUrl %>dijit/themes/claro/claro.css" />
-    <link rel="stylesheet" type="text/css" href="<%= testPageBaseUrl %>esri/css/esri.css" />
-    <link rel="stylesheet" href="<%= testPageBaseUrl %>bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../resources/<%= widgetName %>.css">
+    <link rel="stylesheet" href="<% testPageBaseUrl %>app/resources/App.css">
     <style type='text/css'>
         body {
             padding: 50px;
@@ -18,8 +15,6 @@
     </style>
 
     <!-- JAVASCRIPT -->
-    <script type="text/javascript" src="<%= testPageBaseUrl %>jquery/dist/jquery.js"></script>
-    <script type='text/javascript' src="<%= testPageBaseUrl %>bootstrap/dist/js/bootstrap.js"></script>
     <script type='text/javascript' src="<%= testPageBaseUrl %>dojo/dojo.js"></script>
     <script type="text/javascript">
         var baseUrl = window.location.pathname.replace(/\/[^\/]+$/, '') + '/' + '<%= testPageBaseUrl %>';
@@ -27,7 +22,16 @@
 
         require({
             baseUrl: baseUrl,
-            packages: ['app', 'esri', 'dojo', 'dijit', 'dojox']
+            packages: ['app', 'esri', 'dojo', 'dijit', 'dojox',
+            {
+                name: 'jquery',
+                location: 'jquery/dist',
+                main: 'jquery'
+            },{
+                name: 'bootstrap',
+                location: 'bootstrap',
+                main: 'dist/js/bootstrap'
+            }]
         }, [
             '<%= path %><%= widgetName %>',
 

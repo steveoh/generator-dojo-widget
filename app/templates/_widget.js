@@ -1,21 +1,24 @@
-define([
-    'dojo/text!<%=path%>templates/<%=widgetName%>.html',
+define([<% if(widgetsInTemplate) { %>
+    'dijit/_TemplatedMixin',
+    'dijit/_WidgetBase',
+    'dijit/_WidgetsInTemplateMixin',<% } else { %>
+    'dijit/_TemplatedMixin',
+    'dijit/_WidgetBase',<%}%>
 
     'dojo/_base/declare',
+    'dojo/text!<%=path%>templates/<%=widgetName%>.html',
 
-    'dijit/_WidgetBase',<% if(widgetsInTemplate) { %>
-    'dijit/_TemplatedMixin',
-    'dijit/_WidgetsInTemplateMixin'<% } else { %>
-    'dijit/_TemplatedMixin'<%}%>
-], function(
-    template,
-
-    declare,
-
-    _WidgetBase,<% if(widgetsInTemplate) { %>
+    'xstyle/css!<%=path%>resources/<%=widgetName%>.css'
+], function(<% if(widgetsInTemplate) { %>
     _TemplatedMixin,
-    _WidgetsInTemplateMixin<% } else { %>
-    _TemplatedMixin<%}%>
+    _WidgetBase,
+    _WidgetsInTemplateMixin,
+    <% } else { %>
+    _TemplatedMixin,
+    _WidgetBase,
+    <%}%>
+    declare,
+    template
 ) {<% if(widgetsInTemplate) { %>
     return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {<% } else { %>
     return declare([_WidgetBase, _TemplatedMixin], {<%}%>
