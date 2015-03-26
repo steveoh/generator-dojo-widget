@@ -32,7 +32,7 @@ describe('generator tests', function() {
         'app/templates/TestApp.html',
         'app/tests/TestAppTests.html',
         'app/tests/spec/SpecTestApp.js',
-        'app/resources/TestApp.css'
+        'app/resources/TestApp.styl'
       ];
 
       runGen.withOptions(options).withPrompt({
@@ -43,7 +43,7 @@ describe('generator tests', function() {
       }).on('end', function() {
         assert.file(expected);
         assert.fileContent([
-          ['app/resources/TestApp.css', /\.test-app/],
+          ['app/resources/TestApp.styl', /\.test-app/],
           ['app/TestApp.js', /baseClass: 'test-app'/],
           ['app/TestApp.js', /'dojo\/text\!app\/templates\/TestApp.html',/]
         ]);
@@ -59,7 +59,7 @@ describe('generator tests', function() {
         'app/templates/testApp.html',
         'app/tests/testAppTests.html',
         'app/tests/spec/SpectestApp.js',
-        'app/resources/testApp.css'
+        'app/resources/testApp.styl'
       ];
 
       runGen.withOptions(options).withPrompt({
@@ -70,7 +70,7 @@ describe('generator tests', function() {
       }).on('end', function() {
         assert.file(expected);
         assert.fileContent([
-          ['app/resources/testApp.css', /\.test-app/],
+          ['app/resources/testApp.styl', /\.test-app/],
           ['app/testApp.js', /baseClass: 'test-app'/],
           ['app/testApp.js', /'dojo\/text\!app\/templates\/testApp.html',/]
         ]);

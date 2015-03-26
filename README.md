@@ -28,13 +28,13 @@ A few opinionated files will be created. If you created a widget called `test`, 
       'app/templates/test.html',
       'app/tests/testTests.html',
       'app/tests/spec/Spectest.js',
-      'app/resources/test.css'
+      'app/resources/test.styl'
 
 The `/test.js` file will contain your widget logic.  
 `/templates/test.html` will be an empty template file if your widget has a template.  
 `tests/testTests.html` is an html page that you can load to see your widget in isolation.  
 `tests/spec/Spectest.js` is a [jasmine](http://jasmine.github.io/) test spec file with a default test instantiating your new widget.  
-`resources/test.css` is the style sheet containing styles specific to your new widget.  
+`resources/test.styl` is the style sheet containing styles specific to your new widget.  
 
 ## License
 
