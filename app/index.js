@@ -1,18 +1,16 @@
 'use strict';
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
+var yosay = require('yosay');
 
 var DojoWidgetGenerator = yeoman.generators.Base.extend({
   askFor: function() {
     var done = this.async();
 
-    // have Yeoman greet the user
-    console.log(this.yeoman);
-
     // replace it with a short and sweet description of your generator
-    console.log(chalk.magenta('Welcome to the dojo-widget generator.'));
-    console.log(chalk.green('It is best to run this widget from the parent folder of your package.'));
-    console.log(chalk.green('So like the', chalk.underline.bgWhite('/src') + ' folder'));
+    this.log(yosay('Welcome to the ' + chalk.yellow('dojo-widget') + ' generator. ' +
+      chalk.green('It is best to run this widget from the parent folder of your package. ' +
+      'So like the', chalk.black(chalk.underline.bgYellow('/src')) + ' folder.')));
 
     var prompts = [{
       name: 'widgetName',
