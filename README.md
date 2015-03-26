@@ -42,5 +42,6 @@ MIT
 
 ## Release Notes
 
+**0.2.1** Remove deprecated peerDependencies  
 **0.2.0** Added xstyle and stylus for css  
 
