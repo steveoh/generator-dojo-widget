@@ -26,14 +26,11 @@
   ],
   "dependencies": {
     "chalk": "*",
-    "yeoman-generator": "^0.17.0"
+    "yeoman-generator": "^0.18.0"
   },
   "devDependencies": {
     "grunt": "~0.4",
-    "grunt-bump": "^0.0",
+    "grunt-bump": "^0",
     "mocha": "*"
-  },
-  "peerDependencies": {
-    "yo": ">=1.0.0"
   }
 }
