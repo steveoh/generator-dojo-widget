@@ -1,4 +1,4 @@
-# generator-dojo-widget 
+# generator-dojo-widget
 [![Build Status](https://travis-ci.org/steveoh/generator-dojo-widget.png?branch=master)](https://travis-ci.org/steveoh/generator-dojo-widget)
 [![Dependency Status](https://gemnasium.com/steveoh/generator-dojo-widget.png)](https://gemnasium.com/steveoh/generator-dojo-widget)
 > [Yeoman](http://yeoman.io) generator
@@ -42,7 +42,7 @@ MIT
 
 ## Release Notes
 
-**0.2.2** Updated greeting with `yosay`    
+**0.3.0** Update to yeoman 0.19
+**0.2.2** Update greeting with `yosay`
 **0.2.1** Remove deprecated peerDependencies  
-**0.2.0** Added xstyle and stylus for css  
-
+**0.2.0** Add xstyle and stylus for css  
