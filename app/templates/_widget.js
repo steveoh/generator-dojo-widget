@@ -24,9 +24,8 @@ define([<% if(widgetsInTemplate) { %>
     return declare([_WidgetBase, _TemplatedMixin], {<%}%>
         // description:
         //      <%= description %>
-
         templateString: template,
-        baseClass: '<%= _.dasherize(cssClass) %>',<% if(widgetsInTemplate) { %>
+        baseClass: '<%= cssClass %>',<% if(widgetsInTemplate) { %>
         widgetsInTemplate: true,<% }%>
 
         // Properties to be sent into constructor
@@ -34,8 +33,6 @@ define([<% if(widgetsInTemplate) { %>
         postCreate: function () {
             // summary:
             //      Overrides method of same name in dijit._Widget.
-            // tags:
-            //      private
             console.log('<%= consoleLog %>::postCreate', arguments);
 
             this.setupConnections();
@@ -45,7 +42,6 @@ define([<% if(widgetsInTemplate) { %>
         setupConnections: function () {
             // summary:
             //      wire events, and such
-            //
             console.log('<%= consoleLog %>::setupConnections', arguments);
 
         }

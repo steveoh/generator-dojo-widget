@@ -6,10 +6,10 @@ var assert = require('yeoman-generator').assert;
 
 var runGen;
 var options = {
-  'skip-install-message': true,
-  'skip-install': true,
-  'skip-welcome-message': true,
-  'skip-message': true
+  skipInstallMessage: true,
+  skipInstall: true,
+  skipWelcomeMessage: true,
+  skipMessage: true
 };
 describe('generator tests', function() {
   // not testing the actual run of generators yet
@@ -35,11 +35,11 @@ describe('generator tests', function() {
         'app/resources/TestApp.styl'
       ];
 
-      runGen.withOptions(options).withPrompt({
-        'widgetName': 'TestApp',
-        'description': 'test description',
-        'path': 'app',
-        'widgetsInTemplate': true
+      runGen.withOptions(options).withPrompts({
+        widgetName: 'TestApp',
+        description: 'test description',
+        path: 'app',
+        widgetsInTemplate: true
       }).on('end', function() {
         assert.file(expected);
         assert.fileContent([
@@ -62,7 +62,7 @@ describe('generator tests', function() {
         'app/resources/testApp.styl'
       ];
 
-      runGen.withOptions(options).withPrompt({
+      runGen.withOptions(options).withPrompts({
         'widgetName': 'testApp',
         'description': 'test description',
         'path': 'app',
