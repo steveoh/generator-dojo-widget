@@ -9,14 +9,14 @@ define([<% if(widgetsInTemplate) { %>
     'dojo/text!<%=path%>templates/<%=widgetName%>.html',
 
     'xstyle/css!<%=path%>resources/<%=widgetName%>.css'
-], function(<% if(widgetsInTemplate) { %>
+], function (<% if(widgetsInTemplate) { %>
     _TemplatedMixin,
     _WidgetBase,
     _WidgetsInTemplateMixin,
-    <% } else { %>
+<% } else { %>
     _TemplatedMixin,
     _WidgetBase,
-    <%}%>
+<%}%>
     declare,
     template
 ) {<% if(widgetsInTemplate) { %>
@@ -31,7 +31,7 @@ define([<% if(widgetsInTemplate) { %>
 
         // Properties to be sent into constructor
 
-        postCreate: function() {
+        postCreate: function () {
             // summary:
             //      Overrides method of same name in dijit._Widget.
             // tags:
@@ -42,7 +42,7 @@ define([<% if(widgetsInTemplate) { %>
 
             this.inherited(arguments);
         },
-        setupConnections: function() {
+        setupConnections: function () {
             // summary:
             //      wire events, and such
             //

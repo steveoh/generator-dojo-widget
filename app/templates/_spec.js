@@ -2,31 +2,31 @@ require([
     '<%= path %><%= widgetName %>',
 
     'dojo/dom-construct'
-], function(
+], function (
     WidgetUnderTest,
 
     domConstruct
 ) {
-    describe('<%= path %><%= widgetName %>', function() {
+    describe('<%= path %><%= widgetName %>', function () {
         var widget;
         var destroy = function (widget) {
             widget.destroyRecursive();
             widget = null;
         };
 
-        beforeEach(function() {
+        beforeEach(function () {
             widget = new WidgetUnderTest(null, domConstruct.create('div', null, document.body));
             widget.startup();
         });
 
-        afterEach(function() {
+        afterEach(function () {
             if (widget) {
                 destroy(widget);
             }
         });
 
-        describe('Sanity', function() {
-            it('should create a <%= widgetName %>', function() {
+        describe('Sanity', function () {
+            it('should create a <%= widgetName %>', function () {
                 expect(widget).toEqual(jasmine.any(WidgetUnderTest));
             });
         });
