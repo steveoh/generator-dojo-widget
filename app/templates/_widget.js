@@ -6,9 +6,7 @@ define([<% if(widgetsInTemplate) { %>
     'dijit/_WidgetBase',<%}%>
 
     'dojo/_base/declare',
-    'dojo/text!<%=path%>templates/<%=widgetName%>.html',
-
-    'xstyle/css!<%=path%>resources/<%=widgetName%>.css'
+    'dojo/text!<%=path%>templates/<%=widgetName%>.html'
 ], function (<% if(widgetsInTemplate) { %>
     _TemplatedMixin,
     _WidgetBase,
