@@ -1,17 +1,22 @@
 'use strict';
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
-var yosay = require('yosay');
-var _ = require('underscore.string');
 
 var DojoWidgetGenerator = yeoman.generators.Base.extend({
   askFor: function() {
     var done = this.async();
 
+    var testPageMapChoices = [ 'No map', 'Empty map - i.e. new Map()', 'Web map - i.e. arcgisUtils.createMap()' ];
+	
+	var languageChoices = [ 'JavaScript', 'TypeScript'];
+
+    // have Yeoman greet the user
+    console.log(this.yeoman);
+
     // replace it with a short and sweet description of your generator
-    this.log(yosay('Welcome to the ' + chalk.yellow('dojo-widget') + ' generator. ' +
-      chalk.green('It is best to run this widget from the parent folder of your package. ' +
-      'So like the', chalk.black(chalk.underline.bgYellow('/src')) + ' folder.')));
+    console.log(chalk.magenta('Welcome to the esri-widget generator.'));
+    console.log(chalk.green('It is best to run this widget from the parent folder of your package.'));
+    console.log(chalk.green('So like the', chalk.underline.bgWhite('/src') + ' folder'));
 
     var prompts = [{
       name: 'widgetName',
@@ -29,14 +34,27 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
       name: 'widgetsInTemplate',
       message: 'Will the template contain other widgets?',
       'default': true
+    }, {
+      type: 'list',
+      name: 'testPageMap',
+      message: 'What kind of map would you like in the test page?',
+      choices: testPageMapChoices,
+      'default': 0
+    },{
+      type: 'list',
+      name: 'languageChoice',
+      message: 'What language would you like to use?',
+      choices: languageChoices,
+      'default': 0
     }];
 
     this.prompt(prompts, function(props) {
       this.widgetName = props.widgetName;
-      this.cssClass = _.dasherize(props.widgetName.charAt(0).toLowerCase() + props.widgetName.slice(1));
       this.description = props.description;
       this.path = props.path + '/';
       this.widgetsInTemplate = props.widgetsInTemplate;
+      this.testPageMap = testPageMapChoices.indexOf(props.testPageMap);
+	  this.language = languageChoices.indexOf(props.languageChoice);
       this.consoleLog = this.path + this.widgetName;
       this.consoleLog = this.consoleLog.replace(/\//g, '.');
       var splitPath = this.path.split('/');
@@ -45,40 +63,18 @@ var DojoWidgetGenerator = yeoman.generators.Base.extend({
       for (var x = 0; x < splitPath.length; x++) {
         this.testPageBaseUrl += '../';
       }
-
       done();
     }.bind(this));
   },
 
   app: function() {
-    this.fs.copyTpl(
-      this.templatePath('_widget.js'),
-      this.destinationPath(this.path + this.widgetName + '.js'),
-      this
-    );
-
-    this.fs.copyTpl(
-      this.templatePath('_template.html'),
-      this.destinationPath(this.path + 'templates/' + this.widgetName + '.html')
-    );
-
-    this.fs.copyTpl(
-      this.templatePath('_test_page.html'),
-      this.destinationPath(this.path + 'tests/' + this.widgetName + 'Tests.html'),
-      this
-    );
-
-    this.fs.copyTpl(
-      this.templatePath('_spec.js'),
-      this.destinationPath(this.path + 'tests/spec/Spec' + this.widgetName + '.js'),
-      this
-    );
-
-    this.fs.copyTpl(
-      this.templatePath('_widget.styl'),
-      this.destinationPath(this.path + 'resources/' + this.widgetName + '.styl'),
-      this
-    );
+    this.copy('tests.css', this.path + 'tests/tests.css');
+	var ext = (this.language === 0) ? ".js":".ts";
+    this.template('_widget' +  ext, this.path + this.widgetName + ext);
+    this.template('_template.html', this.path + 'templates/' + this.widgetName + '.html');
+    this.template('_test_page.html', this.path + 'tests/' + this.widgetName + 'Test.html');
+    this.template('_spec.js', this.path + 'tests/spec/' + this.widgetName + 'Spec.js');
+    this.template('_widget.css', this.path + 'resources/' + this.widgetName + '.css');
   },
 
   projectfiles: function() {
