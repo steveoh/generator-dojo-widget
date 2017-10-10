@@ -9,9 +9,9 @@ require([
 ) {
     describe('<%= path %><%= widgetName %>', function () {
         var widget;
-        var destroy = function (widget) {
-            widget.destroyRecursive();
-            widget = null;
+        var destroy = function (w) {
+            w.destroyRecursive();
+            w = null;
         };
 
         beforeEach(function () {
