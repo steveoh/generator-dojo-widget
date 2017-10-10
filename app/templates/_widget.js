@@ -31,7 +31,7 @@ define([<% if(widgetsInTemplate) { %>
         postCreate: function () {
             // summary:
             //      Overrides method of same name in dijit._Widget.
-            console.log('<%= consoleLog %>::postCreate', arguments);
+            console.info('<%= consoleLog %>::postCreate', arguments);
 
             this.setupConnections();
 
@@ -40,8 +40,7 @@ define([<% if(widgetsInTemplate) { %>
         setupConnections: function () {
             // summary:
             //      wire events, and such
-            console.log('<%= consoleLog %>::setupConnections', arguments);
-
+            console.info('<%= consoleLog %>::setupConnections', arguments);
         }
     });
 });
