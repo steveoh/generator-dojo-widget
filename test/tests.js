@@ -1,8 +1,10 @@
 /*global describe, beforeEach, it */
 'use strict';
 var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
+var helpers = require('yeoman-test');
+var assert = require('yeoman-assert');
+var mkdirp = require('mkdirp');
+var fs = require('fs');
 
 var runGen;
 var options = {
@@ -11,21 +13,14 @@ var options = {
   skipWelcomeMessage: true,
   skipMessage: true
 };
-describe('generator tests', function() {
+describe('generator tests', () => {
   // not testing the actual run of generators yet
-  it('the generator can be required without throwing', function() {
+  it('the generator can be required without throwing', () => {
     this.app = require('../app');
   });
 
-  describe('dojo-widget generator', function() {
-
-    beforeEach(function() {
-      runGen = helpers
-        .run(path.join(__dirname, '../app'))
-        .inDir(path.join(__dirname, '.tmp'));
-    });
-
-    it('creates expected files for uppercase name', function(done) {
+  describe('dojo-widget generator', () => {
+    it('creates expected files for uppercase name', () => {
       var expected = [
         // add files you expect to exist here.
         'app/TestApp.js',
@@ -35,12 +30,15 @@ describe('generator tests', function() {
         'app/resources/TestApp.styl'
       ];
 
-      runGen.withOptions(options).withPrompts({
+      helpers.run(path.join(__dirname, '../app'))
+      .withOptions(options)
+      .withPrompts({
         widgetName: 'TestApp',
         description: 'test description',
         path: 'app',
         widgetsInTemplate: true
-      }).on('end', function() {
+      })
+      .on('end', (done) => {
         assert.file(expected);
         assert.fileContent([
           ['app/resources/TestApp.styl', /\.test-app/],
@@ -52,7 +50,7 @@ describe('generator tests', function() {
       });
     });
 
-    it('creates expected files for lower name', function(done) {
+    it('creates expected files for lower name', () => {
       var expected = [
         // add files you expect to exist here.
         'app/testApp.js',
@@ -62,21 +60,24 @@ describe('generator tests', function() {
         'app/resources/testApp.styl'
       ];
 
-      runGen.withOptions(options).withPrompts({
-        'widgetName': 'testApp',
-        'description': 'test description',
-        'path': 'app',
-        'widgetsInTemplate': true
-      }).on('end', function() {
-        assert.file(expected);
-        assert.fileContent([
-          ['app/resources/testApp.styl', /\.test-app/],
-          ['app/testApp.js', /baseClass: 'test-app'/],
-          ['app/testApp.js', /'dojo\/text\!app\/templates\/testApp.html'/]
-        ]);
+      helpers.run(path.join(__dirname, '../app'))
+        .withOptions(options)
+        .withPrompts({
+            'widgetName': 'testApp',
+            'description': 'test description',
+            'path': 'app',
+            'widgetsInTemplate': true
+        })
+        .on('end', (done) => {
+            assert.file(expected);
+            assert.fileContent([
+              ['app/resources/testApp.styl', /\.test-app/],
+              ['app/testApp.js', /baseClass: 'test-app'/],
+              ['app/testApp.js', /'dojo\/text\!app\/templates\/testApp.html'/]
+            ]);
 
-        done();
-      });
+            done();
+        });
     });
   });
 });

@@ -42,6 +42,7 @@ MIT
 
 ## Release Notes
 
+**1.0.0** Update to yeoman 2.0.1
 **0.3.0** Update to yeoman 0.19
 **0.2.2** Update greeting with `yosay`
 **0.2.1** Remove deprecated peerDependencies  
