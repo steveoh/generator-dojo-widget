@@ -1,7 +1,11 @@
 language: node_js
 node_js:
-  - '0.10'
+  - 'node'
+notifications:
+    email:
+        on_success: change
+        on_failure: change
+sudo: false
 before_install:
   - currentfolder=${PWD##*/}
   - if [ "$currentfolder" != 'generator-dojo-widget' ]; then cd .. && eval "mv $currentfolder generator-dojo-widget" && cd generator-dojo-widget; fi
-
